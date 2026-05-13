@@ -4,11 +4,9 @@ entries:
   - f83e2057095f
   - 5aa79974336c
   - 4d799795ce28
-  - a6b8d98f8707
 aliases:
   - flights
   - semantic-flights
   - flights-by-month-od-state
   - flights-by-quarter-carrier
   - flights-by-dow-deststate
-  - delay-pct-by-deptimeblk
