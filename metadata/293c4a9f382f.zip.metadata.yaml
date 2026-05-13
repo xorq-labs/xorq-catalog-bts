@@ -1,0 +1,1040 @@
+md5sum: 58b76e19bf29cfbbc51c7b1847db2d5e
+backends:
+  - xorq_datafusion
+  - xorq_datafusion
+  - xorq_datafusion
+  - xorq_datafusion
+expr_metadata:
+  kind: composed
+  schema_out:
+    DepTimeBlk: string
+    flights: int64
+    delayed_flights: float64
+    delay_pct: float64
+    avg_dep_delay_min: float64
+    avg_arr_delay_min: float64
+  root_tag: catalog-code
+  cache_keys:
+    key: letsql_cache-snapshot-5e233898373dac75b13752607bf75412
+    relative_path: parquet
+  composed_from:
+    - entry_name: fbd76e075dd2
+      alias: flights
+      kind: source
+  sql_queries:
+    - - main
+      - xorq_datafusion
+      - |-
+        SELECT
+          *
+        FROM (
+          SELECT
+            "t1"."DepTimeBlk",
+            COUNT("t1"."DepDel15") AS "flights",
+            SUM("t1"."DepDel15") AS "delayed_flights",
+            AVG("t1"."DepDel15") * 100 AS "delay_pct",
+            AVG("t1"."DepDelayMinutes") AS "avg_dep_delay_min",
+            AVG("t1"."ArrDelayMinutes") AS "avg_arr_delay_min"
+          FROM (
+            SELECT
+              "t1"."Year",
+              "t1"."Quarter",
+              "t1"."Month",
+              "t1"."DayofMonth",
+              "t1"."DayOfWeek",
+              "t1"."FlightDate",
+              "t1"."Reporting_Airline",
+              "t1"."DOT_ID_Reporting_Airline",
+              "t1"."IATA_CODE_Reporting_Airline",
+              "t1"."Tail_Number",
+              "t1"."Flight_Number_Reporting_Airline",
+              "t1"."OriginAirportID",
+              "t1"."OriginAirportSeqID",
+              "t1"."OriginCityMarketID",
+              "t1"."Origin",
+              "t1"."OriginCityName",
+              "t1"."OriginState",
+              "t1"."OriginStateFips",
+              "t1"."OriginStateName",
+              "t1"."OriginWac",
+              "t1"."DestAirportID",
+              "t1"."DestAirportSeqID",
+              "t1"."DestCityMarketID",
+              "t1"."Dest",
+              "t1"."DestCityName",
+              "t1"."DestState",
+              "t1"."DestStateFips",
+              "t1"."DestStateName",
+              "t1"."DestWac",
+              "t1"."CRSDepTime",
+              "t1"."DepTime",
+              "t1"."DepDelay",
+              "t1"."DepDelayMinutes",
+              "t1"."DepDel15",
+              "t1"."DepartureDelayGroups",
+              "t1"."TaxiOut",
+              "t1"."WheelsOff",
+              "t1"."WheelsOn",
+              "t1"."TaxiIn",
+              "t1"."CRSArrTime",
+              "t1"."ArrTime",
+              "t1"."ArrDelay",
+              "t1"."ArrDelayMinutes",
+              "t1"."ArrDel15",
+              "t1"."ArrivalDelayGroups",
+              "t1"."ArrTimeBlk",
+              "t1"."Cancelled",
+              "t1"."CancellationCode",
+              "t1"."Diverted",
+              "t1"."CRSElapsedTime",
+              "t1"."ActualElapsedTime",
+              "t1"."AirTime",
+              "t1"."Flights",
+              "t1"."Distance",
+              "t1"."DistanceGroup",
+              "t1"."CarrierDelay",
+              "t1"."WeatherDelay",
+              "t1"."NASDelay",
+              "t1"."SecurityDelay",
+              "t1"."LateAircraftDelay",
+              "t1"."FirstDepTime",
+              "t1"."TotalAddGTime",
+              "t1"."LongestAddGTime",
+              "t1"."DivAirportLandings",
+              "t1"."DivReachedDest",
+              "t1"."DivActualElapsedTime",
+              "t1"."DivArrDelay",
+              "t1"."DivDistance",
+              "t1"."Div1Airport",
+              "t1"."Div1AirportID",
+              "t1"."Div1AirportSeqID",
+              "t1"."Div1WheelsOn",
+              "t1"."Div1TotalGTime",
+              "t1"."Div1LongestGTime",
+              "t1"."Div1WheelsOff",
+              "t1"."Div1TailNum",
+              "t1"."Div2Airport",
+              "t1"."Div2AirportID",
+              "t1"."Div2AirportSeqID",
+              "t1"."Div2WheelsOn",
+              "t1"."Div2TotalGTime",
+              "t1"."Div2LongestGTime",
+              "t1"."Div2WheelsOff",
+              "t1"."Div2TailNum",
+              "t1"."Div3Airport",
+              "t1"."Div3AirportID",
+              "t1"."Div3AirportSeqID",
+              "t1"."Div3WheelsOn",
+              "t1"."Div3TotalGTime",
+              "t1"."Div3LongestGTime",
+              "t1"."Div3WheelsOff",
+              "t1"."Div3TailNum",
+              "t1"."Div4Airport",
+              "t1"."Div4AirportID",
+              "t1"."Div4AirportSeqID",
+              "t1"."Div4WheelsOn",
+              "t1"."Div4TotalGTime",
+              "t1"."Div4LongestGTime",
+              "t1"."Div4WheelsOff",
+              "t1"."Div4TailNum",
+              "t1"."Div5Airport",
+              "t1"."Div5AirportID",
+              "t1"."Div5AirportSeqID",
+              "t1"."Div5WheelsOn",
+              "t1"."Div5TotalGTime",
+              "t1"."Div5LongestGTime",
+              "t1"."Div5WheelsOff",
+              "t1"."Div5TailNum",
+              "t1"."_bts_year",
+              "t1"."_bts_month",
+              "t1"."_bts_source_file",
+              "t1"."_bts_source_url_prefix",
+              "t1"."DepTimeBlk"
+            FROM (
+              SELECT
+                *
+              FROM "ibis_rbr-placeholder_n4xx7jsnvvdsph" AS "t0"
+              WHERE
+                "t0"."Cancelled" = 0
+            ) AS "t1"
+          ) AS t1
+          GROUP BY
+            "t1"."DepTimeBlk"
+        ) AS "t2"
+        ORDER BY
+          "t2"."DepTimeBlk" ASC
+    - - 04a1de547d769752c62f67f157f6689e
+      - xorq_datafusion
+      - |-
+        SELECT
+          *
+        FROM "ibis_rbr-placeholder_yv3aytrj5fdizl"
+    - - ibis_rbr-placeholder_n4xx7jsnvvdsph
+      - xorq_datafusion
+      - |-
+        SELECT
+          *
+        FROM "ibis_rbr-placeholder_yv3aytrj5fdizl"
+  lineage:
+    nodes:
+      - id: "0"
+        type: HashingTag
+        label: HashingTag
+        schema:
+          DepTimeBlk: string
+          flights: int64
+          delayed_flights: float64
+          delay_pct: float64
+          avg_dep_delay_min: float64
+          avg_arr_delay_min: float64
+        tag_metadata:
+          tag: catalog-code
+          code: "source.filter(source.Cancelled == 0).group_by(\"DepTimeBlk\").aggregate(flights=source.DepDel15.count(), delayed_flights=source.DepDel15.sum(), delay_pct=source.DepDel15.mean() * 100, avg_dep_delay_min=source.DepDelayMinutes.mean(), avg_arr_delay_min=source.ArrDelayMinutes.mean()).order_by(\"DepTimeBlk\")"
+      - id: "1"
+        type: Sort
+        label: Sort
+        schema:
+          DepTimeBlk: string
+          flights: int64
+          delayed_flights: float64
+          delay_pct: float64
+          avg_dep_delay_min: float64
+          avg_arr_delay_min: float64
+      - id: "2"
+        type: Aggregate
+        label: Aggregate
+        schema:
+          DepTimeBlk: string
+          flights: int64
+          delayed_flights: float64
+          delay_pct: float64
+          avg_dep_delay_min: float64
+          avg_arr_delay_min: float64
+      - id: "3"
+        type: SortKey
+        label: SortKey
+      - id: "4"
+        type: Filter
+        label: Filter
+        schema:
+          Year: int32
+          Quarter: int32
+          Month: int32
+          DayofMonth: int32
+          DayOfWeek: int32
+          FlightDate: date
+          Reporting_Airline: string
+          DOT_ID_Reporting_Airline: int64
+          IATA_CODE_Reporting_Airline: string
+          Tail_Number: string
+          Flight_Number_Reporting_Airline: int64
+          OriginAirportID: int64
+          OriginAirportSeqID: int64
+          OriginCityMarketID: int64
+          Origin: string
+          OriginCityName: string
+          OriginState: string
+          OriginStateFips: int32
+          OriginStateName: string
+          OriginWac: int32
+          DestAirportID: int64
+          DestAirportSeqID: int64
+          DestCityMarketID: int64
+          Dest: string
+          DestCityName: string
+          DestState: string
+          DestStateFips: int32
+          DestStateName: string
+          DestWac: int32
+          CRSDepTime: int32
+          DepTime: int32
+          DepDelay: float64
+          DepDelayMinutes: float64
+          DepDel15: float64
+          DepartureDelayGroups: int32
+          DepTimeBlk: string
+          TaxiOut: float64
+          WheelsOff: int32
+          WheelsOn: int32
+          TaxiIn: float64
+          CRSArrTime: int32
+          ArrTime: int32
+          ArrDelay: float64
+          ArrDelayMinutes: float64
+          ArrDel15: float64
+          ArrivalDelayGroups: int32
+          ArrTimeBlk: string
+          Cancelled: float64
+          CancellationCode: string
+          Diverted: float64
+          CRSElapsedTime: float64
+          ActualElapsedTime: float64
+          AirTime: float64
+          Flights: float64
+          Distance: float64
+          DistanceGroup: int32
+          CarrierDelay: float64
+          WeatherDelay: float64
+          NASDelay: float64
+          SecurityDelay: float64
+          LateAircraftDelay: float64
+          FirstDepTime: int32
+          TotalAddGTime: float64
+          LongestAddGTime: float64
+          DivAirportLandings: int32
+          DivReachedDest: float64
+          DivActualElapsedTime: float64
+          DivArrDelay: float64
+          DivDistance: float64
+          Div1Airport: string
+          Div1AirportID: int64
+          Div1AirportSeqID: int64
+          Div1WheelsOn: int32
+          Div1TotalGTime: float64
+          Div1LongestGTime: float64
+          Div1WheelsOff: int32
+          Div1TailNum: string
+          Div2Airport: string
+          Div2AirportID: int64
+          Div2AirportSeqID: int64
+          Div2WheelsOn: int32
+          Div2TotalGTime: float64
+          Div2LongestGTime: float64
+          Div2WheelsOff: int32
+          Div2TailNum: string
+          Div3Airport: string
+          Div3AirportID: int64
+          Div3AirportSeqID: int64
+          Div3WheelsOn: int32
+          Div3TotalGTime: float64
+          Div3LongestGTime: float64
+          Div3WheelsOff: int32
+          Div3TailNum: string
+          Div4Airport: string
+          Div4AirportID: int64
+          Div4AirportSeqID: int64
+          Div4WheelsOn: int32
+          Div4TotalGTime: float64
+          Div4LongestGTime: float64
+          Div4WheelsOff: int32
+          Div4TailNum: string
+          Div5Airport: string
+          Div5AirportID: int64
+          Div5AirportSeqID: int64
+          Div5WheelsOn: int32
+          Div5TotalGTime: float64
+          Div5LongestGTime: float64
+          Div5WheelsOff: int32
+          Div5TailNum: string
+          _bts_year: int32
+          _bts_month: int32
+          _bts_source_file: string
+          _bts_source_url_prefix: string
+      - id: "5"
+        type: Field
+        label: "Field:DepTimeBlk"
+      - id: "6"
+        type: Count
+        label: Count
+      - id: "7"
+        type: Sum
+        label: Sum
+      - id: "8"
+        type: Multiply
+        label: Multiply
+      - id: "9"
+        type: Mean
+        label: Mean
+      - id: "10"
+        type: Mean
+        label: Mean
+      - id: "11"
+        type: Field
+        label: "Field:DepTimeBlk"
+      - id: "12"
+        type: HashingTag
+        label: HashingTag
+        schema:
+          Year: int32
+          Quarter: int32
+          Month: int32
+          DayofMonth: int32
+          DayOfWeek: int32
+          FlightDate: date
+          Reporting_Airline: string
+          DOT_ID_Reporting_Airline: int64
+          IATA_CODE_Reporting_Airline: string
+          Tail_Number: string
+          Flight_Number_Reporting_Airline: int64
+          OriginAirportID: int64
+          OriginAirportSeqID: int64
+          OriginCityMarketID: int64
+          Origin: string
+          OriginCityName: string
+          OriginState: string
+          OriginStateFips: int32
+          OriginStateName: string
+          OriginWac: int32
+          DestAirportID: int64
+          DestAirportSeqID: int64
+          DestCityMarketID: int64
+          Dest: string
+          DestCityName: string
+          DestState: string
+          DestStateFips: int32
+          DestStateName: string
+          DestWac: int32
+          CRSDepTime: int32
+          DepTime: int32
+          DepDelay: float64
+          DepDelayMinutes: float64
+          DepDel15: float64
+          DepartureDelayGroups: int32
+          DepTimeBlk: string
+          TaxiOut: float64
+          WheelsOff: int32
+          WheelsOn: int32
+          TaxiIn: float64
+          CRSArrTime: int32
+          ArrTime: int32
+          ArrDelay: float64
+          ArrDelayMinutes: float64
+          ArrDel15: float64
+          ArrivalDelayGroups: int32
+          ArrTimeBlk: string
+          Cancelled: float64
+          CancellationCode: string
+          Diverted: float64
+          CRSElapsedTime: float64
+          ActualElapsedTime: float64
+          AirTime: float64
+          Flights: float64
+          Distance: float64
+          DistanceGroup: int32
+          CarrierDelay: float64
+          WeatherDelay: float64
+          NASDelay: float64
+          SecurityDelay: float64
+          LateAircraftDelay: float64
+          FirstDepTime: int32
+          TotalAddGTime: float64
+          LongestAddGTime: float64
+          DivAirportLandings: int32
+          DivReachedDest: float64
+          DivActualElapsedTime: float64
+          DivArrDelay: float64
+          DivDistance: float64
+          Div1Airport: string
+          Div1AirportID: int64
+          Div1AirportSeqID: int64
+          Div1WheelsOn: int32
+          Div1TotalGTime: float64
+          Div1LongestGTime: float64
+          Div1WheelsOff: int32
+          Div1TailNum: string
+          Div2Airport: string
+          Div2AirportID: int64
+          Div2AirportSeqID: int64
+          Div2WheelsOn: int32
+          Div2TotalGTime: float64
+          Div2LongestGTime: float64
+          Div2WheelsOff: int32
+          Div2TailNum: string
+          Div3Airport: string
+          Div3AirportID: int64
+          Div3AirportSeqID: int64
+          Div3WheelsOn: int32
+          Div3TotalGTime: float64
+          Div3LongestGTime: float64
+          Div3WheelsOff: int32
+          Div3TailNum: string
+          Div4Airport: string
+          Div4AirportID: int64
+          Div4AirportSeqID: int64
+          Div4WheelsOn: int32
+          Div4TotalGTime: float64
+          Div4LongestGTime: float64
+          Div4WheelsOff: int32
+          Div4TailNum: string
+          Div5Airport: string
+          Div5AirportID: int64
+          Div5AirportSeqID: int64
+          Div5WheelsOn: int32
+          Div5TotalGTime: float64
+          Div5LongestGTime: float64
+          Div5WheelsOff: int32
+          Div5TailNum: string
+          _bts_year: int32
+          _bts_month: int32
+          _bts_source_file: string
+          _bts_source_url_prefix: string
+        tag_metadata:
+          tag: catalog-source
+          entry_name: fbd76e075dd2
+          alias: flights
+          kind: source
+      - id: "13"
+        type: Equals
+        label: Equals
+      - id: "14"
+        type: Field
+        label: "Field:DepDel15"
+      - id: "15"
+        type: Mean
+        label: Mean
+      - id: "16"
+        type: Literal
+        label: "Literal: 100"
+      - id: "17"
+        type: Field
+        label: "Field:DepDelayMinutes"
+      - id: "18"
+        type: Field
+        label: "Field:ArrDelayMinutes"
+      - id: "19"
+        type: RemoteTable
+        label: "RemoteTable:ibis_rbr-placeholder_n4xx7jsnvvdsph"
+        schema:
+          Year: int32
+          Quarter: int32
+          Month: int32
+          DayofMonth: int32
+          DayOfWeek: int32
+          FlightDate: date
+          Reporting_Airline: string
+          DOT_ID_Reporting_Airline: int64
+          IATA_CODE_Reporting_Airline: string
+          Tail_Number: string
+          Flight_Number_Reporting_Airline: int64
+          OriginAirportID: int64
+          OriginAirportSeqID: int64
+          OriginCityMarketID: int64
+          Origin: string
+          OriginCityName: string
+          OriginState: string
+          OriginStateFips: int32
+          OriginStateName: string
+          OriginWac: int32
+          DestAirportID: int64
+          DestAirportSeqID: int64
+          DestCityMarketID: int64
+          Dest: string
+          DestCityName: string
+          DestState: string
+          DestStateFips: int32
+          DestStateName: string
+          DestWac: int32
+          CRSDepTime: int32
+          DepTime: int32
+          DepDelay: float64
+          DepDelayMinutes: float64
+          DepDel15: float64
+          DepartureDelayGroups: int32
+          DepTimeBlk: string
+          TaxiOut: float64
+          WheelsOff: int32
+          WheelsOn: int32
+          TaxiIn: float64
+          CRSArrTime: int32
+          ArrTime: int32
+          ArrDelay: float64
+          ArrDelayMinutes: float64
+          ArrDel15: float64
+          ArrivalDelayGroups: int32
+          ArrTimeBlk: string
+          Cancelled: float64
+          CancellationCode: string
+          Diverted: float64
+          CRSElapsedTime: float64
+          ActualElapsedTime: float64
+          AirTime: float64
+          Flights: float64
+          Distance: float64
+          DistanceGroup: int32
+          CarrierDelay: float64
+          WeatherDelay: float64
+          NASDelay: float64
+          SecurityDelay: float64
+          LateAircraftDelay: float64
+          FirstDepTime: int32
+          TotalAddGTime: float64
+          LongestAddGTime: float64
+          DivAirportLandings: int32
+          DivReachedDest: float64
+          DivActualElapsedTime: float64
+          DivArrDelay: float64
+          DivDistance: float64
+          Div1Airport: string
+          Div1AirportID: int64
+          Div1AirportSeqID: int64
+          Div1WheelsOn: int32
+          Div1TotalGTime: float64
+          Div1LongestGTime: float64
+          Div1WheelsOff: int32
+          Div1TailNum: string
+          Div2Airport: string
+          Div2AirportID: int64
+          Div2AirportSeqID: int64
+          Div2WheelsOn: int32
+          Div2TotalGTime: float64
+          Div2LongestGTime: float64
+          Div2WheelsOff: int32
+          Div2TailNum: string
+          Div3Airport: string
+          Div3AirportID: int64
+          Div3AirportSeqID: int64
+          Div3WheelsOn: int32
+          Div3TotalGTime: float64
+          Div3LongestGTime: float64
+          Div3WheelsOff: int32
+          Div3TailNum: string
+          Div4Airport: string
+          Div4AirportID: int64
+          Div4AirportSeqID: int64
+          Div4WheelsOn: int32
+          Div4TotalGTime: float64
+          Div4LongestGTime: float64
+          Div4WheelsOff: int32
+          Div4TailNum: string
+          Div5Airport: string
+          Div5AirportID: int64
+          Div5AirportSeqID: int64
+          Div5WheelsOn: int32
+          Div5TotalGTime: float64
+          Div5LongestGTime: float64
+          Div5WheelsOff: int32
+          Div5TailNum: string
+          _bts_year: int32
+          _bts_month: int32
+          _bts_source_file: string
+          _bts_source_url_prefix: string
+      - id: "20"
+        type: Field
+        label: "Field:Cancelled"
+      - id: "21"
+        type: Literal
+        label: "Literal: 0"
+      - id: "22"
+        type: CachedNode
+        label: "Cache[cache] xorq_cached_node_name_placeholder"
+        schema:
+          Year: int32
+          Quarter: int32
+          Month: int32
+          DayofMonth: int32
+          DayOfWeek: int32
+          FlightDate: date
+          Reporting_Airline: string
+          DOT_ID_Reporting_Airline: int64
+          IATA_CODE_Reporting_Airline: string
+          Tail_Number: string
+          Flight_Number_Reporting_Airline: int64
+          OriginAirportID: int64
+          OriginAirportSeqID: int64
+          OriginCityMarketID: int64
+          Origin: string
+          OriginCityName: string
+          OriginState: string
+          OriginStateFips: int32
+          OriginStateName: string
+          OriginWac: int32
+          DestAirportID: int64
+          DestAirportSeqID: int64
+          DestCityMarketID: int64
+          Dest: string
+          DestCityName: string
+          DestState: string
+          DestStateFips: int32
+          DestStateName: string
+          DestWac: int32
+          CRSDepTime: int32
+          DepTime: int32
+          DepDelay: float64
+          DepDelayMinutes: float64
+          DepDel15: float64
+          DepartureDelayGroups: int32
+          DepTimeBlk: string
+          TaxiOut: float64
+          WheelsOff: int32
+          WheelsOn: int32
+          TaxiIn: float64
+          CRSArrTime: int32
+          ArrTime: int32
+          ArrDelay: float64
+          ArrDelayMinutes: float64
+          ArrDel15: float64
+          ArrivalDelayGroups: int32
+          ArrTimeBlk: string
+          Cancelled: float64
+          CancellationCode: string
+          Diverted: float64
+          CRSElapsedTime: float64
+          ActualElapsedTime: float64
+          AirTime: float64
+          Flights: float64
+          Distance: float64
+          DistanceGroup: int32
+          CarrierDelay: float64
+          WeatherDelay: float64
+          NASDelay: float64
+          SecurityDelay: float64
+          LateAircraftDelay: float64
+          FirstDepTime: int32
+          TotalAddGTime: float64
+          LongestAddGTime: float64
+          DivAirportLandings: int32
+          DivReachedDest: float64
+          DivActualElapsedTime: float64
+          DivArrDelay: float64
+          DivDistance: float64
+          Div1Airport: string
+          Div1AirportID: int64
+          Div1AirportSeqID: int64
+          Div1WheelsOn: int32
+          Div1TotalGTime: float64
+          Div1LongestGTime: float64
+          Div1WheelsOff: int32
+          Div1TailNum: string
+          Div2Airport: string
+          Div2AirportID: int64
+          Div2AirportSeqID: int64
+          Div2WheelsOn: int32
+          Div2TotalGTime: float64
+          Div2LongestGTime: float64
+          Div2WheelsOff: int32
+          Div2TailNum: string
+          Div3Airport: string
+          Div3AirportID: int64
+          Div3AirportSeqID: int64
+          Div3WheelsOn: int32
+          Div3TotalGTime: float64
+          Div3LongestGTime: float64
+          Div3WheelsOff: int32
+          Div3TailNum: string
+          Div4Airport: string
+          Div4AirportID: int64
+          Div4AirportSeqID: int64
+          Div4WheelsOn: int32
+          Div4TotalGTime: float64
+          Div4LongestGTime: float64
+          Div4WheelsOff: int32
+          Div4TailNum: string
+          Div5Airport: string
+          Div5AirportID: int64
+          Div5AirportSeqID: int64
+          Div5WheelsOn: int32
+          Div5TotalGTime: float64
+          Div5LongestGTime: float64
+          Div5WheelsOff: int32
+          Div5TailNum: string
+          _bts_year: int32
+          _bts_month: int32
+          _bts_source_file: string
+          _bts_source_url_prefix: string
+      - id: "23"
+        type: RemoteTable
+        label: "RemoteTable:04a1de547d769752c62f67f157f6689e"
+        schema:
+          Year: int32
+          Quarter: int32
+          Month: int32
+          DayofMonth: int32
+          DayOfWeek: int32
+          FlightDate: date
+          Reporting_Airline: string
+          DOT_ID_Reporting_Airline: int64
+          IATA_CODE_Reporting_Airline: string
+          Tail_Number: string
+          Flight_Number_Reporting_Airline: int64
+          OriginAirportID: int64
+          OriginAirportSeqID: int64
+          OriginCityMarketID: int64
+          Origin: string
+          OriginCityName: string
+          OriginState: string
+          OriginStateFips: int32
+          OriginStateName: string
+          OriginWac: int32
+          DestAirportID: int64
+          DestAirportSeqID: int64
+          DestCityMarketID: int64
+          Dest: string
+          DestCityName: string
+          DestState: string
+          DestStateFips: int32
+          DestStateName: string
+          DestWac: int32
+          CRSDepTime: int32
+          DepTime: int32
+          DepDelay: float64
+          DepDelayMinutes: float64
+          DepDel15: float64
+          DepartureDelayGroups: int32
+          DepTimeBlk: string
+          TaxiOut: float64
+          WheelsOff: int32
+          WheelsOn: int32
+          TaxiIn: float64
+          CRSArrTime: int32
+          ArrTime: int32
+          ArrDelay: float64
+          ArrDelayMinutes: float64
+          ArrDel15: float64
+          ArrivalDelayGroups: int32
+          ArrTimeBlk: string
+          Cancelled: float64
+          CancellationCode: string
+          Diverted: float64
+          CRSElapsedTime: float64
+          ActualElapsedTime: float64
+          AirTime: float64
+          Flights: float64
+          Distance: float64
+          DistanceGroup: int32
+          CarrierDelay: float64
+          WeatherDelay: float64
+          NASDelay: float64
+          SecurityDelay: float64
+          LateAircraftDelay: float64
+          FirstDepTime: int32
+          TotalAddGTime: float64
+          LongestAddGTime: float64
+          DivAirportLandings: int32
+          DivReachedDest: float64
+          DivActualElapsedTime: float64
+          DivArrDelay: float64
+          DivDistance: float64
+          Div1Airport: string
+          Div1AirportID: int64
+          Div1AirportSeqID: int64
+          Div1WheelsOn: int32
+          Div1TotalGTime: float64
+          Div1LongestGTime: float64
+          Div1WheelsOff: int32
+          Div1TailNum: string
+          Div2Airport: string
+          Div2AirportID: int64
+          Div2AirportSeqID: int64
+          Div2WheelsOn: int32
+          Div2TotalGTime: float64
+          Div2LongestGTime: float64
+          Div2WheelsOff: int32
+          Div2TailNum: string
+          Div3Airport: string
+          Div3AirportID: int64
+          Div3AirportSeqID: int64
+          Div3WheelsOn: int32
+          Div3TotalGTime: float64
+          Div3LongestGTime: float64
+          Div3WheelsOff: int32
+          Div3TailNum: string
+          Div4Airport: string
+          Div4AirportID: int64
+          Div4AirportSeqID: int64
+          Div4WheelsOn: int32
+          Div4TotalGTime: float64
+          Div4LongestGTime: float64
+          Div4WheelsOff: int32
+          Div4TailNum: string
+          Div5Airport: string
+          Div5AirportID: int64
+          Div5AirportSeqID: int64
+          Div5WheelsOn: int32
+          Div5TotalGTime: float64
+          Div5LongestGTime: float64
+          Div5WheelsOff: int32
+          Div5TailNum: string
+          _bts_year: int32
+          _bts_month: int32
+          _bts_source_file: string
+          _bts_source_url_prefix: string
+      - id: "24"
+        type: FlightUDXF
+        label: FlightUDXF
+        schema:
+          Year: int32
+          Quarter: int32
+          Month: int32
+          DayofMonth: int32
+          DayOfWeek: int32
+          FlightDate: date
+          Reporting_Airline: string
+          DOT_ID_Reporting_Airline: int64
+          IATA_CODE_Reporting_Airline: string
+          Tail_Number: string
+          Flight_Number_Reporting_Airline: int64
+          OriginAirportID: int64
+          OriginAirportSeqID: int64
+          OriginCityMarketID: int64
+          Origin: string
+          OriginCityName: string
+          OriginState: string
+          OriginStateFips: int32
+          OriginStateName: string
+          OriginWac: int32
+          DestAirportID: int64
+          DestAirportSeqID: int64
+          DestCityMarketID: int64
+          Dest: string
+          DestCityName: string
+          DestState: string
+          DestStateFips: int32
+          DestStateName: string
+          DestWac: int32
+          CRSDepTime: int32
+          DepTime: int32
+          DepDelay: float64
+          DepDelayMinutes: float64
+          DepDel15: float64
+          DepartureDelayGroups: int32
+          DepTimeBlk: string
+          TaxiOut: float64
+          WheelsOff: int32
+          WheelsOn: int32
+          TaxiIn: float64
+          CRSArrTime: int32
+          ArrTime: int32
+          ArrDelay: float64
+          ArrDelayMinutes: float64
+          ArrDel15: float64
+          ArrivalDelayGroups: int32
+          ArrTimeBlk: string
+          Cancelled: float64
+          CancellationCode: string
+          Diverted: float64
+          CRSElapsedTime: float64
+          ActualElapsedTime: float64
+          AirTime: float64
+          Flights: float64
+          Distance: float64
+          DistanceGroup: int32
+          CarrierDelay: float64
+          WeatherDelay: float64
+          NASDelay: float64
+          SecurityDelay: float64
+          LateAircraftDelay: float64
+          FirstDepTime: int32
+          TotalAddGTime: float64
+          LongestAddGTime: float64
+          DivAirportLandings: int32
+          DivReachedDest: float64
+          DivActualElapsedTime: float64
+          DivArrDelay: float64
+          DivDistance: float64
+          Div1Airport: string
+          Div1AirportID: int64
+          Div1AirportSeqID: int64
+          Div1WheelsOn: int32
+          Div1TotalGTime: float64
+          Div1LongestGTime: float64
+          Div1WheelsOff: int32
+          Div1TailNum: string
+          Div2Airport: string
+          Div2AirportID: int64
+          Div2AirportSeqID: int64
+          Div2WheelsOn: int32
+          Div2TotalGTime: float64
+          Div2LongestGTime: float64
+          Div2WheelsOff: int32
+          Div2TailNum: string
+          Div3Airport: string
+          Div3AirportID: int64
+          Div3AirportSeqID: int64
+          Div3WheelsOn: int32
+          Div3TotalGTime: float64
+          Div3LongestGTime: float64
+          Div3WheelsOff: int32
+          Div3TailNum: string
+          Div4Airport: string
+          Div4AirportID: int64
+          Div4AirportSeqID: int64
+          Div4WheelsOn: int32
+          Div4TotalGTime: float64
+          Div4LongestGTime: float64
+          Div4WheelsOff: int32
+          Div4TailNum: string
+          Div5Airport: string
+          Div5AirportID: int64
+          Div5AirportSeqID: int64
+          Div5WheelsOn: int32
+          Div5TotalGTime: float64
+          Div5LongestGTime: float64
+          Div5WheelsOff: int32
+          Div5TailNum: string
+          _bts_year: int32
+          _bts_month: int32
+          _bts_source_file: string
+          _bts_source_url_prefix: string
+      - id: "25"
+        type: InMemoryTable
+        label: InMemoryTable
+        schema:
+          year_month: string
+    edges:
+      - - "0"
+        - "1"
+      - - "1"
+        - "2"
+      - - "1"
+        - "3"
+      - - "2"
+        - "4"
+      - - "2"
+        - "5"
+      - - "2"
+        - "6"
+      - - "2"
+        - "7"
+      - - "2"
+        - "8"
+      - - "2"
+        - "9"
+      - - "2"
+        - "10"
+      - - "3"
+        - "11"
+      - - "4"
+        - "12"
+      - - "4"
+        - "13"
+      - - "5"
+        - "4"
+      - - "6"
+        - "14"
+      - - "7"
+        - "14"
+      - - "8"
+        - "15"
+      - - "8"
+        - "16"
+      - - "9"
+        - "17"
+      - - "10"
+        - "18"
+      - - "11"
+        - "2"
+      - - "12"
+        - "19"
+      - - "13"
+        - "20"
+      - - "13"
+        - "21"
+      - - "14"
+        - "4"
+      - - "15"
+        - "14"
+      - - "17"
+        - "4"
+      - - "18"
+        - "4"
+      - - "19"
+        - "22"
+      - - "20"
+        - "12"
+      - - "22"
+        - "23"
+      - - "23"
+        - "24"
+      - - "24"
+        - "25"
+    root: "0"
