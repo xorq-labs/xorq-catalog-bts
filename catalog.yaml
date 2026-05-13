@@ -5,6 +5,7 @@ entries:
   - 5aa79974336c
   - 4d799795ce28
   - ad0209025c55
+  - 6ef674c9432a
 aliases:
   - flights
   - semantic-flights
@@ -12,3 +13,4 @@ aliases:
   - flights-by-quarter-carrier
   - flights-by-dow-deststate
   - flights-by-origin-deptimeblk
+  - flights-by-origin-deptimeblk-cumulative
