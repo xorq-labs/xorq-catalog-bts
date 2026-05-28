@@ -3,8 +3,10 @@ entries:
   - b77c830de24f
   - 1489f9a0733e
   - 229dd05670c9
+  - 574b2334c855
 aliases:
   - flights
   - semantic-flights
   - flights-by-month-od-state
   - flights-by-quarter-carrier
+  - flights-by-dow-deststate
